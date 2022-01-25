@@ -64,15 +64,11 @@
                 <p class="fw-bold">N° Bon:&nbsp;</p>
                 <p class="text-muted">ezfzefezfez</p>
             </div>
-            <div class="d-flex">
-                <p class="fw-bold">Tarif S.A.V:&nbsp;</p>
-                <p class="text-muted">ezfzefezfez</p>
-            </div>
         </div>
     </div>
 
     <div class="bg-dark p-5 rounded-lg my-3 text-white">
-        <p class="lead my-1">Identification du matériel</p>
+        <p class="lead my-1">Accords préalable</p>
         <hr class="mb-3">
         <p class="text-muted">{{ $ticket->prior_agreement }}</p>
     </div>
@@ -92,7 +88,7 @@
         <div>
             <div class="d-flex">
                 <p class="fw-bold">Date de création:&nbsp;</p>
-                <p class="text-muted">ezfzefezfez</p>
+                <p class="text-muted">{{ $ticket->dateFormated() }}</p>
             </div>
             <div class="d-flex">
                 <p class="fw-bold">Expert:&nbsp;</p>
@@ -103,7 +99,7 @@
                 <div class="w-75 ms-5">
                     <div class="d-flex justify-content-between">
                         <p class="fw-bold">Création:&nbsp;</p>
-                        <p class="text-muted">é"é"'é'</p>
+                        <p class="text-muted">{{ $ticket->dateFormated() }}</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="fw-bold">Traitement:&nbsp;</p>
@@ -116,7 +112,8 @@
 
     <div class="p-5 rounded-lg my-3">
         <p>
-            John DOE approuve les règles ci-dessous lors de sa venu le 15/10/2021 pour bénéficier du S.A.V de SONOLENS.
+            <strong>{{ $ticket->customerTicket->name }} {{ $ticket->customerTicket->first_name }}</strong>
+            approuve les règles ci-dessous lors de sa venu le <strong>{{ $ticket->dateFormated() }}</strong> pour bénéficier du S.A.V de SONOLENS.
             Tout S.A.V ne sera pas repris sans pièces d'identité. 
             Tout S.A.V stocké plus d'un mois dans nos locaux sera vendu. 
             Pour bénéficier de la garantie S.A.V, la facture d'achat est obligatoire. Toute machine étant ouverte, touché, ou mal remonté sera refusé.
