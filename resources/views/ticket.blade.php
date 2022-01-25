@@ -1,0 +1,137 @@
+@extends('base')
+
+@section('content')
+    <div class="bg-dark my-4">
+        <h3 class="text-center text-white py-2">S.A.V - {{ $ticket->id }} - {{ $ticket->customerTicket->name }}</h3>
+    </div>
+    <a href="{{ url()->previous() }}" class="btn btn-primary">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <div class="bg-light p-5 rounded-lg my-3">
+        <p class="lead my-1">Informations de vente</p>
+        <hr class="mb-3">
+        <div class="d-flex">
+            <p class="fw-bold">Client:&nbsp;</p>
+            <p class="text-muted">{{ $ticket->customerTicket->name }} {{ $ticket->customerTicket->first_name }}</p>
+        </div>
+        <div class="d-flex">
+            <p class="fw-bold">Date d'achat:&nbsp;</p>
+            <p class="text-muted">vjsjfd</p>
+        </div>
+        <div class="d-flex">
+            <p class="fw-bold">N° de facture:&nbsp;</p>
+            <p class="text-muted">23877</p>
+        </div>
+    </div>
+
+    <div class="bg-dark p-5 rounded-lg my-3 text-white">
+        <p class="lead my-1">Identification du matériel</p>
+        <hr class="mb-3">
+        <div>
+            <div class="d-flex flex">
+                <p class="fw-bold">Type:&nbsp;</p>
+                <p class="text-muted">ezfzefezfez</p>
+            </div>
+            <div class="d-flex flex">
+                <p class="fw-bold">Marque:&nbsp;</p>
+                <p class="text-muted">ezfzefezfez</p>
+            </div>
+            <div class="d-flex flex">
+                <p class="fw-bold">Modèle:&nbsp;</p>
+                <p class="text-muted">ezfzefezfez</p>
+            </div>
+            <div class="d-flex flex">
+                <p class="fw-bold">Numéro de série:&nbsp;</p>
+                <p class="text-muted">ezfzefezfez</p>
+            </div>
+            <div class="d-flex flex">
+                <p class="fw-bold">Panne constaté:&nbsp;</p>
+                <p class="text-muted">ezfzefezfez</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light p-5 rounded-lg my-3">
+        <p class="lead my-1">Echange S.A.V</p>
+        <hr class="mb-3">
+        <div class="d-flex justify-content-lg-between">
+            <div class="d-flex">
+                <p class="fw-bold">Prêt\Location:&nbsp;</p>
+                <p class="text-muted">ezfzefezfez</p>
+            </div>
+            <div class="d-flex">
+                <p class="fw-bold">N° Bon:&nbsp;</p>
+                <p class="text-muted">ezfzefezfez</p>
+            </div>
+            <div class="d-flex">
+                <p class="fw-bold">Tarif S.A.V:&nbsp;</p>
+                <p class="text-muted">ezfzefezfez</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-dark p-5 rounded-lg my-3 text-white">
+        <p class="lead my-1">Identification du matériel</p>
+        <hr class="mb-3">
+        <p class="text-muted">{{ $ticket->prior_agreement }}</p>
+    </div>
+
+    <div class="bg-light p-5 rounded-lg my-3">
+        <p class="lead my-1">SAV</p>
+        <hr class="mb-3">
+        <div class="d-flex">
+            <p class="fw-bold">Tarif SAV:</p>
+            <p class="text-muted"></p>
+        </div>
+    </div>
+
+    <div class="bg-dark p-5 rounded-lg my-3 text-white">
+        <p class="lead my-1">Informations SAV</p>
+        <hr class="mb-3">
+        <div>
+            <div class="d-flex">
+                <p class="fw-bold">Date de création:&nbsp;</p>
+                <p class="text-muted">ezfzefezfez</p>
+            </div>
+            <div class="d-flex">
+                <p class="fw-bold">Expert:&nbsp;</p>
+                <p class="text-muted">ezfzefezfez</p>
+            </div>
+            <div>
+                <p class="fw-bold">Historique S.A.V:&nbsp;</p>
+                <div class="w-75 ms-5">
+                    <div class="d-flex justify-content-between">
+                        <p class="fw-bold">Création:&nbsp;</p>
+                        <p class="text-muted">é"é"'é'</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="fw-bold">Traitement:&nbsp;</p>
+                        <p class="text-muted">é"é"'é'</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-5 rounded-lg my-3">
+        <p>
+            John DOE approuve les règles ci-dessous lors de sa venu le 15/10/2021 pour bénéficier du S.A.V de SONOLENS.
+            Tout S.A.V ne sera pas repris sans pièces d'identité. 
+            Tout S.A.V stocké plus d'un mois dans nos locaux sera vendu. 
+            Pour bénéficier de la garantie S.A.V, la facture d'achat est obligatoire. Toute machine étant ouverte, touché, ou mal remonté sera refusé.
+            Tous les produits bénéficient de la garantie fabricant.
+            La responsabilité de la Société ne sera pas engagé en cas de retard dû à une rupture de stock chez le fournisseur.
+            Toute garantie est exclue en cas de mauvaise utilisation, négligence ou mauvaise entretien de la part du client.
+            La S.A.V est également exclue en cas d'environnement non conforme aux données constructeurs.
+        </p>
+    </div>
+
+    <div class="d-flex justify-content-between mb-5">
+        <button type="button" class="btn btn-primary">Ajouter signature client</button>
+        <button type="button" class="btn btn-secondary">
+            <i class="fas fa-print me-2"></i>
+            Imprimer
+        </button>
+    </div>
+@endsection
