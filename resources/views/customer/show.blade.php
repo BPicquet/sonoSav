@@ -61,15 +61,16 @@
     <div>
         <table class="table table-striped table-hover my-4">
             <tbody>
-                <tr class="table-light">
-                    <th scope="row">1</th>
-                    <td>{{ $customer->name }}</td>
-                    <td>{{ $customer->first_name }}</td>
-                    <td>Pioneer</td>
-                    <td>XDJ RX3</td>
-                    <td>En réparation</td>
-                    <td>12/10/2022</td>
-                </tr>
+                @foreach ($tickets as $ticket)
+                    <tr class="table-light">
+                        <th scope="row"><a href="{{ route('ticket', $ticket->id) }}">{{ $ticket->id }}</a></th>
+                        <td>{{ $customer->name }} {{ $customer->first_name }}</td>
+                        <td>{{ $ticket->brand }}</td>
+                        <td>{{ $ticket->model }}</td>
+                        <td>En réparation</td>
+                        <td>12/10/2022</td>
+                    </tr>
+                @endforeach
             </tbody>
           </table>
     </div>

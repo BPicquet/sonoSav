@@ -15,11 +15,26 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->integer('price');
-            $table->string('prior_agreement');
 
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('customer');
+
+            $table->integer('number_invoice');
+            $table->date('purchase_date');
+
+            $table->string('category');
+            $table->string('brand');
+            $table->string('model');
+            $table->integer('serial_number');
+            $table->longtext('breakdown');
+
+            $table->string('exchange_type');
+            $table->integer('exchange_number_ticket');
+
+            $table->string('price');
+            $table->longtext('prior_agreement');
+
+            $table->boolean('rules_sav');
 
             $table->unsignedBigInteger('created_by_id');
             $table->foreign('created_by_id')->references('id')->on('user');

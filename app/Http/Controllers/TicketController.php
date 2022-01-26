@@ -30,7 +30,11 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('ticket.create');
+        $customers = Customer::all();
+
+        return view('ticket.create', [
+            'customers' => $customers
+        ]);
     }
 
     /**

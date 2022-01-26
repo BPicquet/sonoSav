@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use App\Models\Customer;
 use App\Models\CustomerType;
 use Illuminate\Http\Request;
@@ -67,9 +68,11 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = Customer::where('id', $id)->firstOrFail();
+        $tickets = Ticket::all()->where('customer_id', $id);
 
         return view('customer.show', [
-            'customer' => $customer
+            'customer' => $customer,
+            'tickets'  => $tickets
         ]);
     }
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="bg-dark my-4">
-        <h3 class="text-center text-white py-2">S.A.V - {{ $ticket->id }} - {{ $ticket->customerTicket->name }}</h3>
+        <h3 class="text-center text-white py-2">Ticket S.A.V N°{{ $ticket->id }} - {{ $ticket->customerTicket->name }} {{ $ticket->customerTicket->first_name }}</h3>
     </div>
     <a href="{{ url()->previous() }}" class="btn btn-primary">
         <i class="fas fa-arrow-left"></i>
@@ -17,11 +17,11 @@
         </div>
         <div class="d-flex">
             <p class="fw-bold">Date d'achat:&nbsp;</p>
-            <p class="text-muted">vjsjfd</p>
+            <p class="text-muted">{{ $ticket->purchase_date }}</p>
         </div>
         <div class="d-flex">
             <p class="fw-bold">N° de facture:&nbsp;</p>
-            <p class="text-muted">23877</p>
+            <p class="text-muted">{{ $ticket->number_invoice }}</p>
         </div>
     </div>
 
@@ -31,23 +31,23 @@
         <div>
             <div class="d-flex flex">
                 <p class="fw-bold">Type:&nbsp;</p>
-                <p class="text-muted">ezfzefezfez</p>
+                <p class="text-muted">{{ $ticket->category }}</p>
             </div>
             <div class="d-flex flex">
                 <p class="fw-bold">Marque:&nbsp;</p>
-                <p class="text-muted">ezfzefezfez</p>
+                <p class="text-muted">{{ $ticket->brand }}</p>
             </div>
             <div class="d-flex flex">
                 <p class="fw-bold">Modèle:&nbsp;</p>
-                <p class="text-muted">ezfzefezfez</p>
+                <p class="text-muted">{{ $ticket->model }}</p>
             </div>
             <div class="d-flex flex">
                 <p class="fw-bold">Numéro de série:&nbsp;</p>
-                <p class="text-muted">ezfzefezfez</p>
+                <p class="text-muted">{{ $ticket->serial_number }}</p>
             </div>
             <div class="d-flex flex">
                 <p class="fw-bold">Panne constaté:&nbsp;</p>
-                <p class="text-muted">ezfzefezfez</p>
+                <p class="text-muted">{{ $ticket->breakdown }}</p>
             </div>
         </div>
     </div>
@@ -58,11 +58,11 @@
         <div class="d-flex justify-content-lg-between">
             <div class="d-flex">
                 <p class="fw-bold">Prêt\Location:&nbsp;</p>
-                <p class="text-muted">ezfzefezfez</p>
+                <p class="text-muted">{{ $ticket->exchange_type }}</p>
             </div>
             <div class="d-flex">
                 <p class="fw-bold">N° Bon:&nbsp;</p>
-                <p class="text-muted">ezfzefezfez</p>
+                <p class="text-muted">{{ $ticket->exchange_number_ticket }}</p>
             </div>
         </div>
     </div>
@@ -77,8 +77,8 @@
         <p class="lead my-1">SAV</p>
         <hr class="mb-3">
         <div class="d-flex">
-            <p class="fw-bold">Tarif SAV:</p>
-            <p class="text-muted"></p>
+            <p class="fw-bold">Tarif SAV:&nbsp;</p>
+            <p class="text-muted">{{ $ticket->price }}</p>
         </div>
     </div>
 
@@ -92,7 +92,7 @@
             </div>
             <div class="d-flex">
                 <p class="fw-bold">Expert:&nbsp;</p>
-                <p class="text-muted">ezfzefezfez</p>
+                <p class="text-muted">{{ $ticket->userTicket->name }}</p>
             </div>
             <div>
                 <p class="fw-bold">Historique S.A.V:&nbsp;</p>

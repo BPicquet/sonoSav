@@ -2,8 +2,8 @@
 
 @section('content')
     <h1 class="text-center my-5">Création d'un ticket S.A.V</h1>
-
-    <form action="{{ route('customers.store')}}" method="post">
+    <!-- AJOUTER L'ACTION -->
+    <form action="" method="post">
         @csrf
         <div class="bg-light p-5 rounded-lg my-3">
             <p class="lead my-1">Informations sur le client</p>
@@ -12,9 +12,13 @@
                 <div class="form-group my-3">
                     <label>Email</label>
                     <select class="form-select" name="ticket_customer_mail">
-                        <option value="">Benj@gmail.com</option>
-                        <option value="">admin@gmail.com</option>             
+                        @foreach($customers as $customer)
+                            <option value="{{ $customer->id }}">{{ $customer->name }} {{ $customer->first_name }}</option>
+                        @endforeach                
                     </select>
+                </div>
+                <div>
+                    <p>Le client n'existe pas ? <a href="{{ route('customers.create') }}">Créez le dés maintenant !</a></p>
                 </div>
             </div>
         </div>
@@ -26,7 +30,7 @@
                 <div class="col">
                     <div class="form-group my-3">
                         <label>N° de facture</label>
-                        <input autofocus type="text" class="form-control @error('number_invoice') is-invalid @enderror" name="number_invoice" placeholder="124545">
+                        <input type="text" class="form-control @error('number_invoice') is-invalid @enderror" name="number_invoice" placeholder="124545">
                     </div>
                     @error('number_invoice')
                         <span class="invalid-feedback" role="alert">
@@ -51,14 +55,92 @@
         <div class="bg-light p-5 rounded-lg my-3">
             <p class="lead my-1">Identification du matériel</p>
             <hr class="mb-3">
-            
+            <div class="row d-flex">
+                <div class="col">
+                    <div class="form-group my-3">
+                        <label>Catégorie</label>
+                        <input type="text" class="form-control @error('category') is-invalid @enderror" name="category" placeholder="Contrôleur">
+                    </div>
+                    @error('category')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="col">
+                    <div class="form-group my-3">
+                        <label>Marque</label>
+                        <input type="text" class="form-control @error('brand') is-invalid @enderror" name="brand" placeholder="Pioneer">
+                    </div>
+                    @error('brand')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="col">
+                    <div class="form-group my-3">
+                        <label>Modèle</label>
+                        <input type="text" class="form-control @error('model') is-invalid @enderror" name="model" placeholder="XDJ-RX3">
+                    </div>
+                    @error('model')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group my-3">
+                    <label>N° de série</label>
+                    <input type="text" class="form-control @error('serial_number') is-invalid @enderror" name="serial_number" placeholder="45372814">
+                </div>
+                @error('serial_number')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="row">
+                <div class="form-group my-3 text-dark">
+                    <label>Panne constaté</label>
+                    <textarea class="form-control w-100 @error('breakdown') is-invalid @enderror" name="breakdown" placeholder="Veuillez renseigner la panne constaté">
+                    </textarea>
+                </div>
+                @error('breakdown')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
         </div>
 
         <div class="bg-dark p-5 rounded-lg my-3 text-white">
             <p class="lead my-1">Echange S.A.V</p>
             <hr class="mb-3">
             <div class="row d-flex">
-                
+                <div class="col">
+                    <div class="form-group my-3">
+                        <label>Type d'échange</label>
+                        <input type="text" class="form-control @error('exchange_type') is-invalid @enderror" name="exchange_type" placeholder="Prêt">
+                    </div>
+                    @error('exchange_type')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="col">
+                    <div class="form-group my-3">
+                        <label>N° de bon</label>
+                        <input type="text" class="form-control @error('exchange_number') is-invalid @enderror" name="exchange_number" placeholder="45658">
+                    </div>
+                    @error('exchange_number')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
         </div>
 
@@ -81,15 +163,22 @@
         <div class="bg-dark p-5 rounded-lg my-3 text-white">
             <p class="lead my-1">Tarif S.A.V</p>
             <hr class="mb-3">
-            <div class="row d-flex">
-                
+            <div class="row">
+                <div class="form-group my-3">
+                    <input type="text" class="form-control @error('price') is-invalid @enderror" name="price" placeholder="Garantie">
+                </div>
+                @error('price')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
         </div>
 
         <div class="p-5 rounded-lg my-3">
             <div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="rules_checkbox">
                     <label class="form-check-label" for="flexCheckDefault">
                         J'approuve les règles ci-dessous pour bénéficier du S.A.V de SONOLENS.
                     </label>

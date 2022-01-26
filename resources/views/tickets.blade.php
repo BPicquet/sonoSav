@@ -8,18 +8,24 @@
         <thead>
           <tr class="table-dark">
             <th scope="col">id</th>
-            <th scope="col">Prix</th>
-            <th scope="col">Accord préalable</th>
-            <th scope="col">Client</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Marque</th>
+            <th scope="col">Modèle</th>
+            <th scope="col">État</th>
+            <th scope="col">Date de l'état</th>
           </tr>
         </thead>
         <tbody>
             @foreach($tickets as $ticket)
                 <tr class="table-light">
                     <th scope="row"><a href={{ route('ticket', $ticket->id) }}>{{ $ticket->id }}</a></th>
-                    <td>{{ $ticket->price }}</td>
-                    <td>{{ $ticket->prior_agreement }}</td>
-                    <td><a href={{ route('customers.show', $ticket->customerTicket->id ) }}>{{ $ticket->customerTicket->name }} {{ $ticket->customerTicket->first_name }}</a></td>
+                    <td>{{ $ticket->customerTicket->name}}</td>
+                    <td><a href="{{ route('customers.show', $ticket->customerTicket->id ) }}">{{ $ticket->customerTicket->first_name}}</a></td>
+                    <td>{{ $ticket->brand }}</td>
+                    <td>{{ $ticket->model }}</td>
+                    <td></td>
+                    <td></td>
                 </tr>
             @endforeach
         </tbody>
