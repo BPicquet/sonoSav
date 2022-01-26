@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -45,7 +46,25 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Ticket::create([
+            'customer_id'               => $request->input('customer_id'),
+            'number_invoice'            => $request->input('number_invoice'),
+            'purchase_date'             => $request->input('purchase_date'),
+            'category'                  => $request->input('category'),
+            'brand'                     => $request->input('brand'),
+            'model'                     => $request->input('model'),
+            'serial_number'             => $request->input('serial_number'),
+            'breakdown'                 => $request->input('breakdown'),
+            'exchange_type'             => $request->input('exchange_type'),
+            'exchange_number_ticket'    => $request->input('exchange_number'),
+            'prior_agreement'           => $request->input('prior_agreement'),
+            'price'                     => $request->input('price'),
+            'rules_sav'                 => $request->input('rules_checkbox'),
+            /* La personne qui créé le ticket est la personne connecté */
+            'created_by_id'             => Auth::id(),
+        ]);
+
+        return redirect()->route('tickets');
     }
 
     /**

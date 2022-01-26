@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
   @if(Auth::user())
   <a href="{{ route('tickets.create') }}">
-    <i class="fas fa-plus-circle fa-2x mx-3"></i>
+    <i class="fas fa-plus-circle fa-2x mx-3 text-light"></i>
   </a>
   @endif
   <div class="collapse navbar-collapse d-flex justify-content-lg-between align-content-center" id="navbarNav">

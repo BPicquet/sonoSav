@@ -24,10 +24,10 @@ Route::middleware('auth.custom')->group(function () {
         ////* Routes Tickets *////
     Route::get('/tickets', [MainController::class, 'index'])->name('tickets');
     Route::get('/tickets/{id}', [MainController::class, 'show'])->name('ticket');
-
-    /* Routes Tickets Admin */
-    Route::get('/admin/tickets', [ TicketController::class , 'index' ])->middleware('admin')->name('tickets.index');
+    Route::get('/admin/tickets', [ TicketController::class , 'index' ])->middleware('admin')->name('tickets.index'); /* Routes Tickets Admin */
     Route::get('/admin/tickets/create', [ TicketController::class , 'create' ])->name('tickets.create');
+    Route::post('/admin/tickets/store', [ TicketController::class , 'store' ])->name('tickets.store');
+
 
         ////* Routes Customers *////
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');

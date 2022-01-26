@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="bg-primary my-4">
-        <h3 class="text-center text-white py-2">Tous les tickets</h3>
+        <h3 class="text-center text-white py-3">Tous les tickets</h3>
     </div>
     <table class="table table-striped table-hover my-4">
         <thead>

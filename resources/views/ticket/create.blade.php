@@ -2,8 +2,8 @@
 
 @section('content')
     <h1 class="text-center my-5">Création d'un ticket S.A.V</h1>
-    <!-- AJOUTER L'ACTION -->
-    <form action="" method="post">
+
+    <form action="{{ route('tickets.store') }}" method="post">
         @csrf
         <div class="bg-light p-5 rounded-lg my-3">
             <p class="lead my-1">Informations sur le client</p>
@@ -11,7 +11,7 @@
             <div class="col">
                 <div class="form-group my-3">
                     <label>Email</label>
-                    <select class="form-select" name="ticket_customer_mail">
+                    <select class="form-select" name="customer_id">
                         @foreach($customers as $customer)
                             <option value="{{ $customer->id }}">{{ $customer->name }} {{ $customer->first_name }}</option>
                         @endforeach                
@@ -149,17 +149,17 @@
             <hr class="mb-3">
             <div class="col">
                 <div class="form-group my-3">
-                    <textarea class="form-control w-100 @error('prioor_agreement') is-invalid @enderror" name="prioor_agreement" placeholder="Veuillez renseigner les accords">
+                    <textarea class="form-control w-100 @error('prior_agreement') is-invalid @enderror" name="prior_agreement">
                     </textarea>
                 </div>
-                @error('prioor_agreement')
+                @error('prior_agreement')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
             </div>
         </div>
-
+        
         <div class="bg-dark p-5 rounded-lg my-3 text-white">
             <p class="lead my-1">Tarif S.A.V</p>
             <hr class="mb-3">
@@ -178,10 +178,15 @@
         <div class="p-5 rounded-lg my-3">
             <div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="rules_checkbox">
+                    <input class="form-check-input" type="checkbox" value="{{ 'checked' ? 0 : 'null' }}" id="flexCheckDefault" name="rules_checkbox">
                     <label class="form-check-label" for="flexCheckDefault">
                         J'approuve les règles ci-dessous pour bénéficier du S.A.V de SONOLENS.
                     </label>
+                    @error('rules_checkbox')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
                 </div>
                 <ul>
                     <li>Tout S.A.V ne sera pas repris sans pièces d'identité. </li>

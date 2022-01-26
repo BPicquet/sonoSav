@@ -23,7 +23,7 @@ class Ticket extends Model
         'exchange_type',
         'exchange_number_ticket',
         'price',
-        'prioor_agreement',
+        'prior_agreement',
         'rules_sav',
         'created_by_id'
     ];
