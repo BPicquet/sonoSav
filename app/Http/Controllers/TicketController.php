@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Http\Requests\TicketRequest;
 use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
@@ -44,7 +45,7 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TicketRequest $request)
     {
         Ticket::create([
             'customer_id'               => $request->input('customer_id'),
