@@ -13,7 +13,7 @@
         <hr class="mb-3">
         <div class="d-flex">
             <p class="fw-bold">Client:&nbsp;</p>
-            <p class="text-muted">{{ $ticket->customerTicket->name }} {{ $ticket->customerTicket->first_name }}</p>
+            <p class="text-muted"><a href="{{ route('customers.show', $ticket->customerTicket->id) }}">{{ $ticket->customerTicket->name }} {{ $ticket->customerTicket->first_name }}</a></p>
         </div>
         <div class="d-flex">
             <p class="fw-bold">Date d'achat:&nbsp;</p>
@@ -92,7 +92,11 @@
             </div>
             <div class="d-flex">
                 <p class="fw-bold">Expert:&nbsp;</p>
-                <p class="text-muted">{{ $ticket->userTicket->name }}</p>
+                @if($ticket->userTicket->name)
+                    <p class="text-muted">{{ $ticket->userTicket->name }}</p>
+                @else
+                    <p class="text-muted">Ancien utilisateur</p>
+                @endif
             </div>
             <div>
                 <p class="fw-bold">Historique S.A.V:&nbsp;</p>

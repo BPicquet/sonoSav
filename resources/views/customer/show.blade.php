@@ -28,7 +28,11 @@
     <div class="row">
         <div class="col d-flex  justify-content-between">
             <p class="fw-bold">Type:&nbsp;</p>
-            <p class="text-muted">{{ $customer->customerType->label }}</p>
+            @if($customer->customerType->label)
+                <p class="text-muted">{{ $customer->customerType->label }}</p>
+            @else
+                <p class="text-muted">Non renseigné</p>
+            @endif
         </div>
         <div class="col d-flex  justify-content-between">
             <p class="fw-bold">Code Client:&nbsp;</p>
@@ -59,17 +63,18 @@
     <p class="lead my-1">Liste S.A.V</p>
     <hr class="mb-3">
     <div>
-        <table class="table table-striped table-hover my-4">
+        <table class="table table-dark table-striped table-hover my-4 p-2">
             <tbody>
                 @foreach ($tickets as $ticket)
-                    <tr class="table-light">
-                        <th scope="row"><a href="{{ route('ticket', $ticket->id) }}">{{ $ticket->id }}</a></th>
-                        <td>{{ $customer->name }} {{ $customer->first_name }}</td>
-                        <td>{{ $ticket->brand }}</td>
-                        <td>{{ $ticket->model }}</td>
-                        <td>En réparation</td>
-                        <td>12/10/2022</td>
-                    </tr>
+                <tr class="table-dark">
+                    <th scope="row">{{ $ticket->id }}</th>
+                    <td>{{ $customer->name }} {{ $customer->first_name }}</td>
+                    <td>{{ $ticket->brand }}</td>
+                    <td>{{ $ticket->model }}</td>
+                    <td>En réparation</td>
+                    <td>12/10/2022</td>
+                    <td><a href="{{ route('ticket', $ticket->id) }}"><i class="fas fa-eye text-white"></i></a></td>
+                </tr>
                 @endforeach
             </tbody>
           </table>

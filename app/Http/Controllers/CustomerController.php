@@ -126,7 +126,9 @@ class CustomerController extends Controller
     public function delete($id)
     {
         $customer = Customer::where('id', $id)->firstOrFail();
+
         $customer->delete();
+
         return redirect()->route('customers.index')->with('success', 'Le client à bien été supprimé de la base de donnée.');
     }
 }

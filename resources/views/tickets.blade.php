@@ -20,11 +20,19 @@
             @foreach($tickets as $ticket)
                 <tr class="table-light">
                     <th scope="row"><a href={{ route('ticket', $ticket->id) }}>{{ $ticket->id }}</a></th>
-                    <td>{{ $ticket->customerTicket->name}}</td>
+                    <td>{{ $ticket->customerTicket->name }}</td>
                     <td><a href="{{ route('customers.show', $ticket->customerTicket->id ) }}">{{ $ticket->customerTicket->first_name}}</a></td>
                     <td>{{ $ticket->brand }}</td>
                     <td>{{ $ticket->model }}</td>
-                    <td></td>
+                    <td>
+                      <select class="form-select" name="state">
+                          <option value="">Traitement</option>     
+                          <option value="">Envoie</option>  
+                          <option value="">Réparation</option>  
+                          <option value="">Disponible</option>   
+                          <option value="">Fini</option>        
+                      </select>
+                    </td>
                     <td></td>
                 </tr>
             @endforeach

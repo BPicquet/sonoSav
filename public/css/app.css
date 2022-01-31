@@ -1,9 +1,9 @@
 .typewriter-text{
-  width: 20ch;
+  width: 9ch;
   overflow: hidden;
   letter-spacing: 2px;
   white-space: nowrap;
-  animation: typing 3s steps(15), blink .5s step-end infinite alternate;
+  animation: typing 2s steps(15), blink .5s step-end infinite alternate;
   font-size: 30px;
   font-weight: 500;
   border-right: 6px solid black;
