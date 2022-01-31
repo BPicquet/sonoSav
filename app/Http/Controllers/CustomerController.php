@@ -17,7 +17,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::paginate(10);
+        $customers = Customer::orderBy('id', 'DESC')->paginate(10);
 
         return view('customer.index', [
             'customers' => $customers
@@ -125,10 +125,18 @@ class CustomerController extends Controller
      */
     public function delete($id)
     {
+        /* On récupére le client en question */
         $customer = Customer::where('id', $id)->firstOrFail();
+
+        /* On supprime ses tickets */
+        $tickets = Ticket::where('customer_id', $id)->get();
+
+        foreach($tickets as $ticket){
+            $ticket->delete();
+        }
 
         $customer->delete();
 
-        return redirect()->route('customers.index')->with('success', 'Le client à bien été supprimé de la base de donnée.');
+        return redirect()->route('customers.index')->with('success', 'Le client et ses tickets ont bien été supprimés de la base de donnée.');
     }
 }

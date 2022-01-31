@@ -16,7 +16,7 @@ class MainController extends Controller
     /* Ticket */
     public function index()
     {
-        $tickets = Ticket::paginate(10);
+        $tickets = Ticket::orderBy('id', 'DESC')->paginate(10);
 
         return view('tickets', [
             'tickets' => $tickets

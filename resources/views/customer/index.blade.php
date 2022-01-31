@@ -46,7 +46,7 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                  <p>Souhaitez-vous supprimer ce client ?</p>
+                                  <p>Attention: Si vous supprimez ce client, vous supprimez également ses tickets.Souhaitez-vous supprimer ce client ?</p>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="submit" class="btn btn-primary">Oui</button>
