@@ -95,7 +95,7 @@
                 @if($ticket->userTicket->name)
                     <p class="text-muted">{{ $ticket->userTicket->name }}</p>
                 @else
-                    <p class="text-muted">Ancien utilisateur</p>
+                    <p class="text-muted">Ancien employé</p>
                 @endif
             </div>
             <div>
@@ -130,9 +130,9 @@
 
     <div class="d-flex justify-content-between mb-5">
         <button type="button" class="btn btn-primary">Ajouter signature client</button>
-        <button type="button" class="btn btn-secondary">
+        <a type="button" href="{{ route('tickets.pdf', $ticket->id) }}" class="btn btn-secondary">
             <i class="fas fa-print me-2"></i>
             Imprimer
-        </button>
+        </a>
     </div>
 @endsection

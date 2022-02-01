@@ -7,6 +7,7 @@
     <table class="table table-striped table-hover my-4">
         <thead>
           <tr class="table-dark">
+            <td></td>
             <th scope="col">id</th>
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
@@ -19,19 +20,23 @@
         <tbody>
             @foreach($tickets as $ticket)
                 <tr class="table-light">
-                    <th scope="row"><a href={{ route('ticket', $ticket->id) }}>{{ $ticket->id }}</a></th>
+                    <td><a href="{{ route('ticket', $ticket->id) }}"><i class="fas fa-eye"></i></a></td>
+                    <th scope="row">{{ $ticket->id }}</a></th>
                     <td>{{ $ticket->customerTicket->name }}</td>
                     <td><a href="{{ route('customers.show', $ticket->customerTicket->id ) }}">{{ $ticket->customerTicket->first_name}}</a></td>
                     <td>{{ $ticket->brand }}</td>
                     <td>{{ $ticket->model }}</td>
                     <td>
-                      <select class="form-select" name="state">
-                          <option value="">Traitement</option>     
+                      <form action="" method="post" class="d-flex">
+                        <select class="form-select mx-1" name="state">
+                          <option value="" selected>Traitement</option>     
                           <option value="">Envoie</option>  
                           <option value="">Réparation</option>  
                           <option value="">Disponible</option>   
                           <option value="">Fini</option>        
-                      </select>
+                        </select>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                      </form>
                     </td>
                     <td></td>
                 </tr>

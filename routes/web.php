@@ -28,6 +28,9 @@ Route::middleware('auth.custom')->group(function () {
     Route::get('/admin/tickets/create', [ TicketController::class , 'create' ])->name('tickets.create');
     Route::post('/admin/tickets/store', [ TicketController::class , 'store' ])->name('tickets.store');
 
+            /* PDF Route */
+    Route::get('/tickets/{id}/pdf', [MainController::class, 'createPDF'])->name('tickets.pdf');
+
 
         ////* Routes Customers *////
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
