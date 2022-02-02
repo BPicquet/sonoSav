@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Faker\Factory;
 use App\Models\User;
+use App\Models\State;
 use App\Models\Ticket;
 use App\Models\Customer;
 use Illuminate\Database\Seeder;
@@ -35,6 +36,7 @@ class TicketSeeder extends Seeder
                 'prior_agreement'           => $faker->sentence(),
                 'rules_sav'                 => $faker->boolean(),
                 'created_by_id'             => User::inRandomOrder()->first()->id,
+                'state_id'                  => State::inRandomOrder()->first()->id,
             ]);
         }
     }

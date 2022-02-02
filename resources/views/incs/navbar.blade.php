@@ -28,15 +28,15 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="{{ route('tickets') }}">Tous</a>
-            <a class="dropdown-item" href="#">Traitement</a>
-            <a class="dropdown-item" href="#">Envoie</a>
-            <a class="dropdown-item" href="#">Réparation</a>
-            <a class="dropdown-item" href="#">Disponible</a>
-            <a class="dropdown-item" href="#">Fini</a>
+            <a class="dropdown-item" href="{{ route('tickets.processing') }}">Traitement</a>
+            <a class="dropdown-item" href="{{ route('tickets.sending') }}">Envoie</a>
+            <a class="dropdown-item" href="{{ route('tickets.repairing') }}">Réparation</a>
+            <a class="dropdown-item" href="{{ route('tickets.avalaible') }}">Disponible</a>
+            <a class="dropdown-item" href="{{ route('tickets.finished') }}">Fini</a>
           </div>
         </li>
         @else
-          <img style="width:100px" src="https://s3-eu-west-1.amazonaws.com/tpd/logos/581d9c840000ff0005971129/0x0.png"  class="ms-4" alt="">
+          <h2 class="text-white m-2">Sonolens</h2>
         @endif
       </ul>
 

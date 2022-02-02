@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="bg-primary my-4">
-        <h3 class="text-center text-white py-3">Tous les tickets</h3>
+        <h3 class="text-center text-white py-3 {{ $color }}">{{ $title }}</h3>
     </div>
     <table class="table table-striped table-hover my-4">
         <thead>
@@ -15,6 +15,7 @@
             <th scope="col">Modèle</th>
             <th scope="col">État</th>
             <th scope="col">Date de l'état</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -27,18 +28,22 @@
                     <td>{{ $ticket->brand }}</td>
                     <td>{{ $ticket->model }}</td>
                     <td>
-                      <form action="" method="post" class="d-flex">
-                        <select class="form-select mx-1" name="state">
-                          <option value="" selected>Traitement</option>     
-                          <option value="">Envoie</option>  
-                          <option value="">Réparation</option>  
-                          <option value="">Disponible</option>   
-                          <option value="">Fini</option>        
-                        </select>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                      </form>
+                      @if($ticket->state_id === 1)
+                        <span class="badge bg-primary">Traitement</span>
+                      @elseif($ticket->state_id === 2)
+                        <span class="badge bg-info">Envoie</span>
+                      @elseif($ticket->state_id === 3)
+                        <span class="badge bg-warning">Réparation</span>
+                      @elseif($ticket->state_id === 4)
+                        <span class="badge bg-success">Disponible</span>
+                      @elseif($ticket->state_id === 5)
+                        <span class="badge bg-dark">Fini</span>
+                      @endif
                     </td>
-                    <td></td>
+                    <td>{{ $ticket->stateTicket->dateFormated() }}</td>
+                    <td>
+                      <a href=""><i class="fas fa-cogs fa-lg text-black"></i></a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

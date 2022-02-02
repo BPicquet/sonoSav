@@ -23,6 +23,12 @@ Auth::routes();
 Route::middleware('auth.custom')->group(function () {
         ////* Routes Tickets *////
     Route::get('/tickets', [MainController::class, 'index'])->name('tickets');
+    Route::get('/tickets/traitement', [MainController::class, 'stateProcessing'])->name('tickets.processing');
+    Route::get('/tickets/envoie', [MainController::class, 'stateSending'])->name('tickets.sending');
+    Route::get('/tickets/reparation', [MainController::class, 'stateRepairing'])->name('tickets.repairing');
+    Route::get('/tickets/disponible', [MainController::class, 'stateAvalaible'])->name('tickets.avalaible');
+    Route::get('/tickets/fini', [MainController::class, 'stateFinished'])->name('tickets.finished');
+
     Route::get('/tickets/{id}', [MainController::class, 'show'])->name('ticket');
     Route::get('/admin/tickets', [ TicketController::class , 'index' ])->middleware('admin')->name('tickets.index'); /* Routes Tickets Admin */
     Route::get('/admin/tickets/create', [ TicketController::class , 'create' ])->name('tickets.create');

@@ -102,12 +102,8 @@
                 <p class="fw-bold">Historique S.A.V:&nbsp;</p>
                 <div class="w-75 ms-5">
                     <div class="d-flex justify-content-between">
-                        <p class="fw-bold">Création:&nbsp;</p>
-                        <p class="text-muted">{{ $ticket->dateFormated() }}</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p class="fw-bold">Traitement:&nbsp;</p>
-                        <p class="text-muted">é"é"'é'</p>
+                        <p class="fw-bold">{{ $ticket->stateTicket->name }}:&nbsp;</p>
+                        <p class="text-muted">{{ $ticket->stateTicket->created_at }}</p>
                     </div>
                 </div>
             </div>

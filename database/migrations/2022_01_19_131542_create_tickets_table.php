@@ -39,6 +39,9 @@ class CreateTicketsTable extends Migration
             $table->unsignedBigInteger('created_by_id');
             $table->foreign('created_by_id')->references('id')->on('user');
             
+            $table->unsignedBigInteger('state_id');
+            $table->foreign('state_id')->references('id')->on('state');
+
             $table->timestamps();
         });
     }

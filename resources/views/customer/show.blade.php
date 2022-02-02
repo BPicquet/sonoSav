@@ -71,8 +71,8 @@
                     <td>{{ $customer->name }} {{ $customer->first_name }}</td>
                     <td>{{ $ticket->brand }}</td>
                     <td>{{ $ticket->model }}</td>
-                    <td>En réparation</td>
-                    <td>12/10/2022</td>
+                    <td>{{ $ticket->stateTicket->name }}</td>
+                    <td>{{ $ticket->stateTicket->created_at }}</td>
                     <td><a href="{{ route('ticket', $ticket->id) }}"><i class="fas fa-eye text-white"></i></a></td>
                 </tr>
                 @endforeach

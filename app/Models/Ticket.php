@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\State;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,7 +26,8 @@ class Ticket extends Model
         'price',
         'prior_agreement',
         'rules_sav',
-        'created_by_id'
+        'created_by_id',
+        'state_id'
     ];
 
     public function dateFormated(){
@@ -42,5 +44,11 @@ class Ticket extends Model
     {
         // Il faut préciser en deuxième paramètre le nom du champs
         return $this->belongsTo(User::class, 'created_by_id');
+    }
+
+    public function stateTicket()
+    {
+        // Il faut préciser en deuxième paramètre le nom du champs
+        return $this->belongsTo(State::class, 'state_id');
     }
 }

@@ -68,7 +68,7 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = Customer::where('id', $id)->firstOrFail();
-        $tickets = Ticket::all()->where('customer_id', $id);
+        $tickets = Ticket::all()->where('customer_id', $id)->sortByDesc('id');
 
         return view('customer.show', [
             'customer' => $customer,

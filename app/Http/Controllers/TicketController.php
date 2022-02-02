@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\State;
 use App\Models\Ticket;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -63,6 +64,7 @@ class TicketController extends Controller
             'rules_sav'                 => $request->input('rules_checkbox'),
             /* La personne qui créé le ticket est la personne connecté */
             'created_by_id'             => Auth::id(),
+            'state_id'                  => 1
         ]);
 
         return redirect()->route('tickets');
