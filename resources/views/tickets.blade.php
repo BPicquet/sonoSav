@@ -42,7 +42,7 @@
                     </td>
                     <td>{{ $ticket->stateTicket->dateFormated() }}</td>
                     <td>
-                      <a href=""><i class="fas fa-cogs fa-lg text-black"></i></a>
+                      <a href="{{ route('tickets.edit', $ticket->id)}}"><i class="fas fa-cogs fa-lg text-black"></i></a>
                     </td>
                 </tr>
             @endforeach

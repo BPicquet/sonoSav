@@ -14,6 +14,7 @@ class MainController extends Controller
     {
         return view('home');
     }
+    
     /* Generate PDF */
     public function createPDF($id) {
         $ticket = Ticket::where('id', $id)->firstOrFail();

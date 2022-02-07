@@ -78,7 +78,7 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -89,7 +89,13 @@ class TicketController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ticket = Ticket::where('id', $id)->firstOrFail();
+        $states = State::all();
+
+        return view('ticket.edit', [
+            'ticket' => $ticket,
+            'states'  => $states
+        ]);
     }
 
     /**
@@ -99,9 +105,29 @@ class TicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TicketRequest $request, $id)
     {
-        //
+        $ticket = Ticket::where('id', $id)->firstOrFail();
+        return "Hello";
+/*
+        $ticket->customer_id                = $ticket->customerTicket->id;
+        $ticket->number_invoice             = $request->input('number_invoice');
+        $ticket->purchase_date              = $request->input('purchase_date');
+        $ticket->category                   = $request->input('category');
+        $ticket->brand                      = $request->input('brand');
+        $ticket->model                      = $request->input('model');
+        $ticket->serial_number              = $request->input('serial_number');
+        $ticket->breakdown                  = $request->input('breakdown');
+        $ticket->exchange_type              = $request->input('exchange_type');
+        $ticket->exchange_number_ticket     = $request->input('exchange_number');
+        $ticket->prior_agreement            = $request->input('prior_agreement');
+        $ticket->price                      = $request->input('price');
+        $ticket->rules_sav                  = 0;
+        $ticket->created_by_id              = $ticket->userTicket->name;
+        $ticket->state_id                   = $request->input('state_id');
+        $ticket->save();
+
+        return redirect()->route('tickets.index')->with('success', 'Le ticket client a été modifié avec succès');*/
     }
 
     /**

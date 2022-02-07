@@ -72,7 +72,7 @@
                     <td>{{ $ticket->brand }}</td>
                     <td>{{ $ticket->model }}</td>
                     <td>{{ $ticket->stateTicket->name }}</td>
-                    <td>{{ $ticket->stateTicket->created_at }}</td>
+                    <td>{{ $ticket->stateTicket->dateFormated() }}</td>
                     <td><a href="{{ route('ticket', $ticket->id) }}"><i class="fas fa-eye text-white"></i></a></td>
                 </tr>
                 @endforeach
