@@ -29,8 +29,8 @@
             <div class="row d-flex">
                 <div class="col">
                     <div class="form-group my-3">
-                        <label>N° de facture</label>
-                        <input type="text" class="form-control @error('number_invoice') is-invalid @enderror" name="number_invoice" placeholder="124545">
+                        <label for="floatingInput">N° de facture</label>
+                        <input type="text" id="floatingInput" class="form-control @error('number_invoice') is-invalid @enderror" name="number_invoice" placeholder="124545">
                     </div>
                     @error('number_invoice')
                         <span class="invalid-feedback" role="alert">
@@ -104,8 +104,7 @@
             <div class="row">
                 <div class="form-group my-3 text-dark">
                     <label>Panne constaté</label>
-                    <textarea class="form-control w-100 @error('breakdown') is-invalid @enderror" name="breakdown" placeholder="Veuillez renseigner la panne constaté">
-                    </textarea>
+                    <textarea class="form-control w-100 @error('breakdown') is-invalid @enderror" name="breakdown" placeholder="Veuillez renseigner la panne constaté"></textarea>
                 </div>
                 @error('breakdown')
                     <span class="invalid-feedback" role="alert">
@@ -149,8 +148,7 @@
             <hr class="mb-3">
             <div class="col">
                 <div class="form-group my-3">
-                    <textarea class="form-control w-100 @error('prior_agreement') is-invalid @enderror" name="prior_agreement">
-                    </textarea>
+                    <textarea class="form-control w-100 @error('prior_agreement') is-invalid @enderror" name="prior_agreement" placeholder="Veuillez renseigner les accords préalables"></textarea>
                 </div>
                 @error('prior_agreement')
                     <span class="invalid-feedback" role="alert">

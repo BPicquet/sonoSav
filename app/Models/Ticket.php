@@ -23,8 +23,8 @@ class Ticket extends Model
         'breakdown',
         'exchange_type',
         'exchange_number_ticket',
-        'price',
         'prior_agreement',
+        'price',
         'rules_sav',
         'created_by_id',
         'state_id'
@@ -32,6 +32,10 @@ class Ticket extends Model
 
     public function dateFormated(){
         return date_format($this->created_at, 'd/m/Y');
+    }
+
+    public function updatedDateFormated(){
+        return date_format($this->updated_at, 'd/m/Y');
     }
 
     public function customerTicket()

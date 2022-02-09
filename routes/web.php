@@ -22,19 +22,20 @@ Auth::routes();
 
 Route::middleware('auth.custom')->group(function () {
         ////* Routes Tickets *////
-    Route::get('/tickets', [MainController::class, 'index'])->name('tickets');
-    Route::get('/tickets/traitement', [MainController::class, 'stateProcessing'])->name('tickets.processing');
-    Route::get('/tickets/envoie', [MainController::class, 'stateSending'])->name('tickets.sending');
-    Route::get('/tickets/reparation', [MainController::class, 'stateRepairing'])->name('tickets.repairing');
-    Route::get('/tickets/disponible', [MainController::class, 'stateAvalaible'])->name('tickets.avalaible');
-    Route::get('/tickets/fini', [MainController::class, 'stateFinished'])->name('tickets.finished');
-    Route::get('/tickets/{id}', [MainController::class, 'show'])->name('ticket');
+    Route::get('/tickets', [TicketController::class, 'index'])->name('tickets');
+    Route::get('/tickets/traitement', [TicketController::class, 'stateProcessing'])->name('tickets.processing');
+    Route::get('/tickets/envoie', [TicketController::class, 'stateSending'])->name('tickets.sending');
+    Route::get('/tickets/reparation', [TicketController::class, 'stateRepairing'])->name('tickets.repairing');
+    Route::get('/tickets/disponible', [TicketController::class, 'stateAvalaible'])->name('tickets.avalaible');
+    Route::get('/tickets/fini', [TicketController::class, 'stateFinished'])->name('tickets.finished');
+    
 
-    Route::get('/admin/tickets', [ TicketController::class, 'index' ])->middleware('admin')->name('tickets.index'); /* Routes Tickets Admin */
-    Route::get('/admin/tickets/create', [ TicketController::class, 'create' ])->name('tickets.create');
-    Route::post('/admin/tickets/store', [ TicketController::class, 'store' ])->name('tickets.store');
-    Route::get('/admin/tickets/{id}/edit', [ TicketController::class, 'edit' ])->name('tickets.edit');
-    Route::put('/admin/tickets/{id}/update', [ TicketController::class, 'update' ])->name('tickets.update');
+    Route::get('/tickets/create', [ TicketController::class, 'create' ])->name('tickets.create');
+    Route::post('/tickets/store', [ TicketController::class, 'store' ])->name('tickets.store');
+    Route::get('/tickets/{id}', [TicketController::class, 'show'])->name('ticket');
+    Route::get('/tickets/{id}/edit', [ TicketController::class, 'edit' ])->name('tickets.edit');
+    Route::put('/tickets/{id}/update', [ TicketController::class, 'update' ])->name('tickets.update');
+    Route::delete('/tickets/{id}/delete', [ TicketController::class, 'delete' ])->middleware('admin')->name('tickets.delete');
 
             /* PDF Route */
     Route::get('/tickets/{id}/pdf', [MainController::class, 'createPDF'])->name('tickets.pdf');
@@ -48,5 +49,8 @@ Route::middleware('auth.custom')->group(function () {
     Route::get('/customers/{id}/edit', [CustomerController::class, 'edit'])->middleware('admin')->name('customers.edit');
     Route::put('/customers/{id}/update', [CustomerController::class, 'update'])->middleware('admin')->name('customers.update');
     Route::delete('/customers/{id}/delete', [CustomerController::class, 'delete'])->middleware('admin')->name('customers.delete');
+
+        ////* Routes User *////
+    Route::get('/admin/users', [ MainController::class, 'users'])->middleware('admin')->name('users');    
 });
 

@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="bg-dark p-5 rounded-lg my-3 text-white">
             <p class="lead my-1">Informations ventes</p>
             <hr class="mb-3">
@@ -203,6 +203,7 @@
                 </ul>
             </div>
         </div>
+
 
         <div class="d-flex align-items-center justify-content-center my-5">
             <button type="submit" class="btn btn-warning">Modifier le ticket</button>

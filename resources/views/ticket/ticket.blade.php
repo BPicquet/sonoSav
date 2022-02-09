@@ -103,7 +103,7 @@
                 <div class="w-75 ms-5">
                     <div class="d-flex justify-content-between">
                         <p class="fw-bold">{{ $ticket->stateTicket->name }}:&nbsp;</p>
-                        <p class="text-muted">{{ $ticket->stateTicket->created_at }}</p>
+                        <p class="text-muted">{{ $ticket->updatedDateFormated() }}</p>
                     </div>
                 </div>
             </div>

@@ -18,11 +18,71 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::paginate(15);
-        
-        // Retourne la vue dans 'ticket/index'
-        return view('ticket.index', [
-            'tickets' => $tickets
+        $tickets    = Ticket::orderBy('id', 'DESC')->paginate(8);
+        $title      = 'Tous les tickets';
+        $color      = 'bg-primary';
+
+        return view('ticket.tickets', [
+            'tickets'   => $tickets,
+            'title'     => $title,
+            'color'     => $color
+        ]);
+    }
+
+    /* State Ticket index */
+
+    public function stateProcessing()
+    {
+        $tickets = Ticket::where('state_id', 1)->paginate(8);
+
+        return view('ticket.tickets', [
+            'tickets'   => $tickets,
+            'title'     => 'Traitements',
+            'color'     => 'bg-primary'
+        ]);
+    }
+
+    public function stateSending()
+    {
+        $tickets = Ticket::where('state_id', 2)->paginate(8);
+
+        return view('ticket.tickets', [
+            'tickets'   => $tickets,
+            'title'     => 'Envoie',
+            'color'     => 'bg-info'
+        ]);
+    }
+
+    public function stateRepairing()
+    {
+        $tickets = Ticket::where('state_id', 3)->paginate(8);
+
+        return view('ticket.tickets', [
+            'tickets'   => $tickets,
+            'title'     => 'En réparation',
+            'color'     => 'bg-warning'
+        ]);
+    }
+
+    public function stateAvalaible()
+    {
+        $tickets = Ticket::where('state_id', 4)->paginate(8);
+
+        return view('ticket.tickets', [
+            'tickets'   => $tickets,
+            'title'     => 'Disponible',
+            'color'     => 'bg-success'
+        ]);
+    }
+
+    public function stateFinished()
+    {
+        $tickets = Ticket::where('state_id', 5)->paginate(8);
+
+        return view('ticket.tickets', [
+            'tickets'   => $tickets,
+            'title'     => 'Fini',
+            'color'     => 'bg-dark'
         ]);
     }
 
@@ -67,7 +127,7 @@ class TicketController extends Controller
             'state_id'                  => 1
         ]);
 
-        return redirect()->route('tickets');
+        return redirect()->route('tickets')->with('success', 'Le ticket a bien été ajouté');
     }
 
     /**
@@ -78,7 +138,11 @@ class TicketController extends Controller
      */
     public function show($id)
     {
+        $ticket = Ticket::where('id', $id)->firstOrFail();
 
+        return view('ticket.ticket', [
+            'ticket'    => $ticket
+        ]);
     }
 
     /**
@@ -108,8 +172,7 @@ class TicketController extends Controller
     public function update(TicketRequest $request, $id)
     {
         $ticket = Ticket::where('id', $id)->firstOrFail();
-        return "Hello";
-/*
+
         $ticket->customer_id                = $ticket->customerTicket->id;
         $ticket->number_invoice             = $request->input('number_invoice');
         $ticket->purchase_date              = $request->input('purchase_date');
@@ -123,11 +186,11 @@ class TicketController extends Controller
         $ticket->prior_agreement            = $request->input('prior_agreement');
         $ticket->price                      = $request->input('price');
         $ticket->rules_sav                  = 0;
-        $ticket->created_by_id              = $ticket->userTicket->name;
+        $ticket->created_by_id              = $ticket->userTicket->id;
         $ticket->state_id                   = $request->input('state_id');
         $ticket->save();
 
-        return redirect()->route('tickets.index')->with('success', 'Le ticket client a été modifié avec succès');*/
+        return redirect()->route('tickets')->with('success', 'Le ticket client a été modifié avec succès');
     }
 
     /**
@@ -136,8 +199,12 @@ class TicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $ticket = Ticket::where('id', $id)->firstOrFail();
+
+        $ticket->delete();
+
+        return redirect()->route('tickets')->with('success', 'Le ticket à bien été supprimés de la base de donnée.');
     }
 }

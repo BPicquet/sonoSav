@@ -28,11 +28,11 @@
                     <td>{{ $customer->city }}</td>
                     <td>{{ $customer->customerType->label }}</td>
                     @if(Auth::user()->role == "ADMIN")
-                      <td class="d-flex">
-                        <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-warning mx-2"><i class="fas fa-cogs"></i></a>
-                        <button type="submit" class="btn btn-danger mx-2" onclick="onclick(document.querySelector('#modal-open-{{ $customer->id }}').style.display = 'block')">
-                          <i class="far fa-trash-alt"></i>
-                        </button>
+                      <td class="d-flex align-items-center">
+                        <a href="{{ route('customers.edit', $customer->id) }}" class="mx-2"><i class="fas fa-cogs fa-lg text-black"></i></a>
+                        <a type="submit" class="my-1 mx-2" onclick="onclick(document.querySelector('#modal-open-{{ $customer->id }}').style.display = 'block')">
+                          <i class="far fa-trash-alt text-danger"></i>
+                        </a>
                         <form action="{{ route('customers.delete', $customer->id) }}" method="post">
                           @csrf
                           @method('DELETE')

@@ -41,12 +41,10 @@
       </ul>
 
 
-      <ul class="navbar-nav d-flex align-content-center me-4">
+      <ul class="navbar-nav d-flex align-items-center me-4">
         @if(Auth::user())
-          @if(Auth::user()->role === 'ADMIN')
-            <li class="nav-item">
-              <a href="{{ route('tickets.index') }}" class="nav-link">Espace Admin</a>
-            </li>
+          @if(Auth::user()->role == "ADMIN")
+            <a href="{{ route('users') }}" class="text-white mx-3 text-decoration-none">Espace Admin</a>
           @endif
           <li class="nav-item dropdown bg-primary rounded-2">
             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
