@@ -29,15 +29,15 @@
                     <td>{{ $ticket->model }}</td>
                     <td>
                       @if($ticket->state_id === 1)
-                        <span class="badge bg-primary">Traitement</span>
+                        <span class="badge bg-primary w-75">Traitement</span>
                       @elseif($ticket->state_id === 2)
-                        <span class="badge bg-info">Envoie</span>
+                        <span class="badge bg-info w-75">Envoie</span>
                       @elseif($ticket->state_id === 3)
-                        <span class="badge bg-warning">Réparation</span>
+                        <span class="badge bg-warning w-75">Réparation</span>
                       @elseif($ticket->state_id === 4)
-                        <span class="badge bg-success">Disponible</span>
+                        <span class="badge bg-success w-75">Disponible</span>
                       @elseif($ticket->state_id === 5)
-                        <span class="badge bg-dark">Fini</span>
+                        <span class="badge bg-dark w-75">Fini</span>
                       @endif
                     </td>
                     <td>{{ $ticket->updatedDateFormated() }}</td>

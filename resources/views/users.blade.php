@@ -1,6 +1,7 @@
 @extends('base')
 
 @section('content')
+    
     <div class="d-flex justify-content-center flex-wrap">
         @foreach($users as $user)
             <div class="card mb-3 w-75 m-5">
